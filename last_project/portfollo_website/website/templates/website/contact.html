@@ -1,0 +1,24 @@
+{% extends 'website/base.html' %}
+{% block title %} Contect me {% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<div class="text-center">
+    <h1> How To Contact me ?</h1>
+    <h4> By downloading my cv  or you can fillin the the form bellow </h4>
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Auto width -->
+    
+    <a href="{% url 'cv' %}" download="cv">
+        <button class="btn"><i class="fa fa-download"></i> Download CV</button>
+    </a>
+    
+</div>
+<div class="form-group">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-outline-secondary" type="submit">Send Massege</button>
+    </form>
+</div>
+{% endblock %}

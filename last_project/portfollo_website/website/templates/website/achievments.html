@@ -1,0 +1,19 @@
+{% extends 'website/base.html' %}
+{% block title %} Achievments {% endblock %}
+<link rel="stylesheet" type="text/css" href="style.css"/>
+{% block content %}
+
+<h1> Achievments & Certifcats</h1>
+<div class="row">
+    {% for achievment in achievments %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            {% if achievment.image %}
+            <img src="{{ achievment.image.url }}" class="card-img-top">
+            <h4>{{ achievment.title }}</h4>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

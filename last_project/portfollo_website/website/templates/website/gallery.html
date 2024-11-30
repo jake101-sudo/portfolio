@@ -1,0 +1,27 @@
+{% extends 'website/base.html' %}
+{% block title %} Contect me {% endblock %}
+{% block content %}
+
+<div class="text-center">
+    <h1> Gallery </h1>
+    <h4> welcome to my gallery where you can find photos of projects in prograss </h4>
+</div>
+<body>
+    <div class="container">
+        <div class="row">
+            {% for image in images %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ image.title }}</h5>
+                        <p class="card-text">{{ image.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'website/base.html' %}
+
+{% block title %}{{ project.title }}{% endblock %}
+<link rel="stylesheet" type="text/css" href="website/style.css"/>
+
+{% block content %}
+<div class="text-center">
+    <h1>{{ project.title }}</h1>
+    <h5>{{ project.category }}</h5>
+    <p>{{ project.content }}</p>
+    <p>{{ project.url }}</p>
+    {% if project.image %}
+    <img src="{{project.image.url}}" class="img-fluid mb-3" alt="{{project.title}}">
+    {% endif %}
+    
+</div>
+
+{% endblock %}

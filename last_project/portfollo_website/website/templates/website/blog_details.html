@@ -1,0 +1,36 @@
+{% extends 'website/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+<link rel="stylesheet" type="text/css" href="website/style.css"/>
+
+{% block content %}
+<div class="text-center">
+    <h1>{{ post.title }}</h1>
+    <p>  posted on {{ post.created_at }} </p>
+    <h5>{{ post.category }}</h5>
+    <p>{{ post.content }}</p>
+    {% if post.image %}
+    <img src="{{post.image.url}}" class="img-fluid mb-3" alt="{{post.title}}">
+    {% endif %}
+    <h5>Comments</h5>
+    <ul class="list-group">
+        {% for comment in comments %}
+        <li class="list-group-item">
+            <strong>{{ comment.author }}:</strong> {{ comment.content }}
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% if user.is_authenticated %}
+    <h7>Leave a comment</h7>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% else %}
+    <p><a href="{% url 'login' %}">Login</a> to drop a comment</p>
+    {% endif %}
+</div>
+
+{% endblock %}

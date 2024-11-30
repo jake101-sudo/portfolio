@@ -1,0 +1,28 @@
+{% extends 'website/base.html' %}
+
+{% block title %} Blog Post's {% endblock %}
+
+{% block content %}
+<h1> All Blog's</h1>
+<div class="row">
+    {% for blog in blogs %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            {% if blog.image %}
+            <img src="{{ blog.image.url }}" class="card-img-top" alt="{{ blog.title }}">
+            {% endif %}
+
+            <div class="card-body">
+                <h5 class="card-title">{{ blog.title }}</h5>
+                <h6 class="card-footer">{{ blog.category }}</h6>
+                <p class="card-text">{{ blog.content|truncatewords:20 }}</p>
+                <a href="{% url 'blog_details' pk=blog.pk %}" class="btn btn-primary">Read More</a>
+            </div>
+            <div class="card-footer text-muted">
+                Posted on {{ blog.created_at }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

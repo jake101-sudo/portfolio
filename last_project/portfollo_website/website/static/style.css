@@ -1,0 +1,14 @@
+
+header {
+    background-image: url("backg.jpg");
+    padding: 50px;
+}
+
+body {
+    background-image: url("bg.jpg");
+    background-color:rgba(96, 88, 88, 0.832);
+}
+body{
+    background-color: rgb(167, 109, 221);
+}
+
